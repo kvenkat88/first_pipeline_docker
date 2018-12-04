@@ -6,12 +6,7 @@ pipeline {
          args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
          }
         }
-
-         triggers {
-            //Query repository weekdays every four hours starting at minute 0
-            //pollSCM('0 */4 * * 1-5')
-         }
-
+        
         options {
 
             //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline.
@@ -22,9 +17,13 @@ pipeline {
             skipDefaultCheckout(true)
 
             // Keep the 10 most recent builds
-            //buildDiscarder(logRotator(numToKeepStr: '10'))
-            timestamps()
+            //buildDiscarder(logRotator(numToKeepStr: '10')
         }
+
+         //triggers {
+            //Query repository weekdays every four hours starting at minute 0
+            //pollSCM('0 */4 * * 1-5')
+         //}
 
     environment {
         projectName = 'ProjectTemplate'
