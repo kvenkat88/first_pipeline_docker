@@ -1,0 +1,29 @@
+#FROM gcr.io/google-appengine/python
+FROM python:2.7.15
+
+MAINTAINER HPS Engineering and QA Team
+
+COPY . /usr/src/app
+
+WORKDIR  /usr/src/app
+
+# copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /usr/src/app/requirements.txt
+
+RUN pip install -r requirements.txt
+
+
+ENV PYTHONPATH="/usr/src/app/external"
+ENV CYC_SERVER=""
+ENV DATA_DIR=""
+ENV TRANSLATION_DATA=""
+ENV RASA_DIR=""
+ENV SPACY_MODEL_DIR=""
+ENV PROCESSED_PASSAGES_DIR=""
+ENV MONGO_HOST=""
+ENV MONGO_DB="app-database"
+ENV SUPPORTED_MONGO_COLLECTIONS="app-collection"
+
+
+# tell docker what port to expose
+#EXPOSE 8000

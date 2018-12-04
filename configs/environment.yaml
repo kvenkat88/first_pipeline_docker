@@ -1,0 +1,20 @@
+name: Common test information
+description: URL speciciations, username, model and session details
+
+variables:
+    server_url: http://172.17.0.1:5000
+    username: 'JaneDoe-EMAUser'
+    user_model_name: 'JaneDoeEMAUserModel'
+    session_id: 'JaneDoeEMAUserSession'
+    eva_get_question: '/eva_get_question'
+    eva_get_answer: '/eva_get_answer'
+    eva_create_and_get_answer: '/eva_create_and_get_answer'
+    eva_get_intermediate_question: '/eva_get_intermediate_question'
+    eva_get_intermediate_question_answered: '/eva_get_intermediate_question_answered'
+    eva_answer_primary_question: '/eva_answer_primary_question'
+    eva_end: '/eva_end'
+    eva_start: '/eva_start'
+    load_app_data: '/load_app_data'
+    register_user: '/register_user'
+    update_user: '/update_user'
+    kb_search: '/kb_search'

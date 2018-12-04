@@ -1,0 +1,20 @@
+test_name: Get some fake data from the JSON placeholder API
+
+stages:
+  - name: Make sure we get the right ID1
+    request:
+      url: "https://jsonplaceholder.typicode.com/posts/1"
+      method: GET
+    response:
+      status_code: 200
+      body:
+        id: 1
+
+
+
+
+
+
+
+
+
