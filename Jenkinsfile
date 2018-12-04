@@ -6,7 +6,7 @@ pipeline {
          args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
          }
         }
-        
+
         options {
 
             //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline.

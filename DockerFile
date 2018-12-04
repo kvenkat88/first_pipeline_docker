@@ -1,17 +1,24 @@
 #FROM gcr.io/google-appengine/python
-FROM python:2.7.15
+#FROM python:2.7.15
+
+FROM python:3.6.5-alpine3.7
 
 MAINTAINER HPS Engineering and QA Team
+
+# COPY . /usr/src/app
 
 COPY . /usr/src/app
 
 WORKDIR  /usr/src/app
 
 # copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt /usr/src/app/requirements.txt
+#COPY ./requirements.txt /usr/src/app/requirements.txt
+
+COPY requirements.txt ./
 
 RUN pip install -r requirements.txt
 
+copy . .
 
 ENV PYTHONPATH="/usr/src/app/external"
 ENV CYC_SERVER=""
