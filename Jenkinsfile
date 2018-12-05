@@ -108,7 +108,7 @@ pipeline {
 
             mail to: "${env.emailTo}",
                  bcc: "",
-                 cc:""
+                 cc:"",
                  charset: 'UTF-8',
                  subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                  body: "${env.JOB_NAME} (${env.BUILD_NUMBER}) ${env.projectName} build error " +
