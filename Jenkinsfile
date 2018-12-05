@@ -23,7 +23,9 @@ pipeline {
 
 
             //On failure, retry the entire Pipeline the specified number of times
-            retry(2)
+            //Retry in options is not working because of open issue in jenkins
+            //https://issues.jenkins-ci.org/browse/JENKINS-49183
+            //retry(2)
 
             //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
             // unit in 'MINUTES','HOURS','MINUTES'
@@ -81,10 +83,11 @@ pipeline {
 
             steps {
                 // docker build -t reference tag name and directory to look for dockerfile( . -> current dir)
-
-                echo 'Building an image for deployment'
-                sh 'docker build -t hps-api:latest .'
-                //sh 'docker push ./API_Tier'
+                retry(2) {
+                    echo 'Building an image for deployment'
+                    sh 'docker build -t hps-api:latest .'
+                    //sh 'docker push ./API_Tier'
+                }
             }
         }
 
@@ -92,7 +95,13 @@ pipeline {
 
             steps {
                 echo 'Test environment build and setup'
-                sh 'docker run --rm -d --name api-tier-0.1.12.9.7.2018.1 -p 5000:5000 --env CYC_SERVER="https://10.82.98.105/" api-tier-0.1.12'
+                sh 'docker run --rm -d --name api-tier-0.1.12 -p 5000:5000 --env CYC_SERVER="https://10.82.98.105/" api-tier-0.1.12'
+            }
+        }
+
+        stage("Tavern Tests"){
+            steps {
+                sh 'py.test -v ./tests'
             }
         }
     }
@@ -106,13 +115,6 @@ pipeline {
         failure {
             echo "section for failure"
 
-            mail to: "${env.emailTo}",
-                 bcc: "",
-                 cc:"",
-                 charset: 'UTF-8',
-                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                 body: "${env.JOB_NAME} (${env.BUILD_NUMBER}) ${env.projectName} build error " +
-                       "is here: ${env.BUILD_URL}\nStarted by ${env.BUILD_CAUSE}"
         }
         success {
 			echo "section for success"
