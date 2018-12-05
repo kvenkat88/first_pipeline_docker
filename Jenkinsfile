@@ -13,8 +13,8 @@ pipeline {
     }
 
     options {
-
-           timestamps()
+            //https://issues.jenkins-ci.org/browse/JENKINS-48556
+           //timestamps() There is a bug in JENKINS
 
            //Persist artifacts and console output for the specific number of recent Pipeline runs.
            buildDiscarder(logRotator(numToKeepStr: '100'))
