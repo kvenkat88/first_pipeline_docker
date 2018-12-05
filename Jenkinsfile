@@ -8,24 +8,6 @@ pipeline {
          //}
         }
 
-        options {
-
-            //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline.
-            //For example: options { timeout(time: 1, unit: 'HOURS') }
-
-            //timeout(time: 0, unit: 'HOURS')
-
-            //skipDefaultCheckout(true)
-
-            // Keep the 10 most recent builds
-            buildDiscarder(logRotator(numToKeepStr: '1000')
-        }
-
-         //triggers {
-            //Query repository weekdays every four hours starting at minute 0
-            //pollSCM('0 */4 * * 1-5')
-         //}
-
     environment {
         projectName = 'ProjectTemplate'
         emailTo = 'VenkateshKri@hcl.com'
