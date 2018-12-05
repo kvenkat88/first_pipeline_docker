@@ -28,7 +28,7 @@ pipeline {
             //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
             // unit in 'MINUTES','HOURS','MINUTES'
 
-            timeout(time: 5, unit: 'MINUTES')
+            timeout(time: 15, unit: 'MINUTES')
 
            }
 
@@ -107,8 +107,11 @@ pipeline {
             echo "section for failure"
 
             mail to: "${env.emailTo}",
-            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-            body: "${env.JOB_NAME} (${env.BUILD_NUMBER}) ${env.projectName} build error " +
+                 bcc: "",
+                 cc:""
+                 charset: 'UTF-8',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "${env.JOB_NAME} (${env.BUILD_NUMBER}) ${env.projectName} build error " +
                        "is here: ${env.BUILD_URL}\nStarted by ${env.BUILD_CAUSE}"
         }
         success {
