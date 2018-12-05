@@ -18,7 +18,7 @@ pipeline {
             //skipDefaultCheckout(true)
 
             // Keep the 10 most recent builds
-            //buildDiscarder(logRotator(numToKeepStr: '10')
+            buildDiscarder(logRotator(numToKeepStr: '1000')
         }
 
          //triggers {
