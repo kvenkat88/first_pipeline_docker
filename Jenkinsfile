@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        dockerfile true  //to indicate dockerfile in the same directory/current location
+        //dockerfile true  //to indicate dockerfile in the same directory/current location
          //{
          //filename  'Dockerfile'
          //args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
