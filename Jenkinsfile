@@ -2,7 +2,7 @@ pipeline {
     agent {
         dockerfile
          {
-         filename  'Dockerfile'
+         filename  '${WORKSPACE}/Dockerfile'
          args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
          }
         }
@@ -38,8 +38,10 @@ pipeline {
         stage("List and Stop all Containers"){
             steps{
                 // List all containers (only IDs)
+                echo "List all containers (only IDs)"
                 sh 'docker ps -aq'
                 //Stop all running containers
+                echo "Stop all running containers"
                 sh 'docker stop $(docker ps -aq)'
             }
 

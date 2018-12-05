@@ -7,20 +7,20 @@ MAINTAINER HPS Engineering and QA Team
 
 # COPY . /usr/src/app
 
-COPY . /usr/src/app
+RUN mkdir -p /src/app
 
-WORKDIR  /usr/src/app
+WORKDIR  /src/app
+
+COPY . /src/app
 
 # copy just the requirements.txt first to leverage Docker cache
-#COPY ./requirements.txt /usr/src/app/requirements.txt
-
-COPY requirements.txt ./
+COPY ./requirements.txt /src/app/requirements.txt
 
 RUN pip install -r requirements.txt
 
-copy . .
+#copy . .
 
-ENV PYTHONPATH="/usr/src/app/external"
+ENV PYTHONPATH="/src/app/external"
 ENV CYC_SERVER=""
 ENV DATA_DIR=""
 ENV TRANSLATION_DATA=""
