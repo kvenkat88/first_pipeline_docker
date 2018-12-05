@@ -1,6 +1,7 @@
 pipeline {
-    agent {
-        //dockerfile true  //to indicate dockerfile in the same directory/current location
+    agent
+		{
+        dockerfile true  //to indicate dockerfile in the same directory/current location
          //{
          //filename  'Dockerfile'
          //args "-u root -v /var/run/docker.sock:/var/run/docker.sock"
@@ -14,7 +15,7 @@ pipeline {
 
             //timeout(time: 0, unit: 'HOURS')
 
-            skipDefaultCheckout(true)
+            //skipDefaultCheckout(true)
 
             // Keep the 10 most recent builds
             //buildDiscarder(logRotator(numToKeepStr: '10')
