@@ -8,7 +8,7 @@ MAINTAINER HPS Engineering and QA Team
 WORKDIR  /usr/src/app
 
 
-COPY ["C:\Program Files (x86)\Jenkins\workspace\first_pipeline_docker_master", /usr/src/app]
+COPY . /usr/src/app
 
 #RUN pwd print the current working directory
 #RUN echo "$PWD"
