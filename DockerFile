@@ -7,14 +7,14 @@ MAINTAINER HPS Engineering and QA Team
 
 # escape=`
 
-#RUN mkdir -p /usr/src/app
+RUN setx path "%path%;C:\Program Files (x86)\Jenkins\workspace\"
 
 WORKDIR  /usr/src/app
 
 COPY . /usr/src/app
 
-RUN pwd
-RUN echo "$PWD"
+#RUN pwd print the current working directory
+#RUN echo "$PWD"
 
 # copy just the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /usr/src/app/requirements.txt
