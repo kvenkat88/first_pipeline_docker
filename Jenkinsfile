@@ -44,12 +44,12 @@ pipeline {
         stage("List and Stop all Containers"){
             steps{
                 // List all containers (only IDs)
-                echo "List all containers (only IDs)"
-                sh 'docker ps -aq'
+                sh ''' echo "List all containers (only IDs)"
+                    docker ps -aq' '''
 
                 //Stop all running containers
-                echo "Stop all running containers"
-                sh 'docker stop $(docker ps -aq)'
+                sh ''' echo "Stop all running containers"
+                       docker stop $(docker ps -aq) '''
             }
 
         }

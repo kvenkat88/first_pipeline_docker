@@ -16,6 +16,7 @@ COPY . /usr/src/app
 # copy just the requirements.txt first to leverage Docker cache
 COPY ./requirements.txt /usr/src/app/requirements.txt
 
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 #copy . .
