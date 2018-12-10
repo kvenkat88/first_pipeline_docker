@@ -45,7 +45,7 @@ pipeline {
             steps{
                 // List all containers (only IDs)
                 sh ''' echo "List all containers (only IDs)"
-                    docker ps -aq' '''
+                    docker ps -aq '''
 
                 //Stop all running containers
                 sh ''' echo "Stop all running containers"
