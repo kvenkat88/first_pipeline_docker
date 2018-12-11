@@ -3,6 +3,7 @@ pipeline {
 		{
 		//to indicate dockerfile in the same directory/current location
         dockerfile true
+        label 'docker'
         }
 
     environment {
@@ -43,7 +44,7 @@ pipeline {
 
         stage("List and Stop all Containers"){
             steps{
-                // List all containers (only IDs) 
+                // List all containers (only IDs)
                 sh ''' echo "List all containers (only IDs)"
                     docker ps -aq '''
 
