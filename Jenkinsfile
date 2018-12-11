@@ -2,8 +2,7 @@ pipeline {
     agent
 		{
 		//to indicate dockerfile in the same directory/current location
-        //dockerfile true
-        label 'docker'
+        dockerfile true
         }
 
     environment {
