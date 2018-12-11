@@ -19,7 +19,7 @@ COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-RUN apk -U add docker
+#RUN apk -U add docker
 
 #copy . .
 
