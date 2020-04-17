@@ -8,7 +8,7 @@ pipeline {
     environment {
         BUILD_NUM_ENV = currentBuild.getNumber()
         projectName = 'HPS Engineering'
-        emailTo = 'VenkateshKri@hcl.com'
+        emailTo = 'VenkateshKri@hfggg.com'
         emailFrom = 'VenkateshKri-jenkins@hcl.com'
     }
 
@@ -85,17 +85,17 @@ pipeline {
                 // docker build -t reference tag name and directory to look for dockerfile( . -> current dir)
                 retry(2) {
                     echo 'Building an image for deployment'
-                    sh 'docker build -t hps-api:latest .'
+                    sh 'docker build -t hpdfgs-api:latest .'
                     //sh 'docker push ./API_Tier'
                 }
             }
         }
 
-        stage('Run Docker Image and Setup CYC Server Env') {
+        stage('Run Docker Image and Setup CYRTC Server Env') {
 
             steps {
                 echo 'Test environment build and setup'
-                sh 'docker run --rm -d --name api-tier-0.1.12 -p 5000:5000 --env CYC_SERVER="https://10.82.98.105/" api-tier-0.1.12'
+                sh 'docker run --rm -d --name api-tier-0.1.12 -p 5000:5000 --env CYC_SERVER="https://10.82.78.105/" api-tier-0.1.12'
             }
         }
 
